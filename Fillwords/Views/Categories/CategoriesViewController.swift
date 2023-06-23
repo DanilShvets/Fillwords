@@ -17,7 +17,11 @@ class CategoriesViewController: UIViewController {
         static let padding: CGFloat = 20
         static let buttonSize: CGFloat = 35
     }
-    
+    private lazy var settingsButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(settingsButtonPressed), for: .touchUpInside)
+        return button
+    }()
     private lazy var infoButton: UIButton = {
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(infoButtonPressed), for: .touchUpInside)
@@ -70,6 +74,11 @@ class CategoriesViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        configureEttingsButton()
         configureInfoButton()
         configureCollectionView()
         configurePageControl()
@@ -78,6 +87,19 @@ class CategoriesViewController: UIViewController {
     
     
     // MARK: - Конфигурация частей интерфейса
+    
+    private func configureEttingsButton() {
+        view.addSubview(settingsButton)
+        settingsButton.translatesAutoresizingMaskIntoConstraints = false
+        settingsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: UIConstants.padding).isActive = true
+        settingsButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: UIConstants.padding).isActive = true
+        settingsButton.widthAnchor.constraint(equalToConstant: UIConstants.buttonSize).isActive = true
+        settingsButton.heightAnchor.constraint(equalToConstant: UIConstants.buttonSize).isActive = true
+        let settingsButtonButtonImage = UIImage(systemName: "gearshape", withConfiguration: largeConfig)
+        settingsButton.setImage(settingsButtonButtonImage, for: .normal)
+        settingsButton.tintColor = .gray
+        settingsButton.imageView?.contentMode = .scaleAspectFill
+    }
     
     private func configureInfoButton() {
         view.addSubview(infoButton)
@@ -185,9 +207,24 @@ extension CategoriesViewController {
         self.navigationController?.present(gameViewController, animated: true)
     }
     
+    private func showMyViewControllerInACustomizedSheet() {
+        let viewControllerToPresent = SettingsViewController()
+        if let sheet = viewControllerToPresent.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersEdgeAttachedInCompactHeight = true
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+        }
+        present(viewControllerToPresent, animated: true, completion: nil)
+    }
+    
     @objc private func infoButtonPressed() {
         let popUpWindow = PopUpViewController(title: "ФИЛВОРДЫ", text: infoText, buttontext: "OK")
         present(popUpWindow, animated: true, completion: nil)
+    }
+    @objc private func settingsButtonPressed() {
+        showMyViewControllerInACustomizedSheet()
     }
     
     @objc private func playButtonPressed() {

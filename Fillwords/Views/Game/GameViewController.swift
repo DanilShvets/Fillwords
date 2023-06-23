@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GameViewController: UIViewController {
     
@@ -33,7 +34,9 @@ class GameViewController: UIViewController {
     private lazy var highliteColor = UIColor.random
     private lazy var previousView = UIView()
     private lazy var counterOfRightAnswers = 0
-    
+    private lazy var feedbackGenerator : UINotificationFeedbackGenerator? = nil
+    private lazy var soundIsOn = true
+    private lazy var vibroIsOn = true
     
     // MARK: - Создание ячеек игрового поля
 
@@ -550,12 +553,19 @@ class GameViewController: UIViewController {
         return button
     }()
     
+    private var player: AVAudioPlayer?
     
     // MARK: - viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.isMultipleTouchEnabled = false
+        if UserDefaults.standard.value(forKey: "soundIsOn") != nil {
+            soundIsOn = UserDefaults.standard.bool(forKey: "soundIsOn")
+        }
+        if UserDefaults.standard.value(forKey: "vibroIsOn") != nil {
+            vibroIsOn = UserDefaults.standard.bool(forKey: "vibroIsOn")
+        }
         view.backgroundColor = .systemBackground
         addViewsToArray()
         configureBoard()
@@ -744,7 +754,7 @@ class GameViewController: UIViewController {
     }
     
     
-    // MARK: - Обработка жестов и отрисовка вводы
+    // MARK: - Обработка жестов и отрисовка ввода
     
     private func clearViews(afterView currentView: UIView) {
         var indexOfView = 0
@@ -762,6 +772,11 @@ class GameViewController: UIViewController {
     }
         
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if vibroIsOn {
+            feedbackGenerator = UINotificationFeedbackGenerator()
+            feedbackGenerator?.prepare()
+        }
+        
         if let touch = touches.first {
             let position = touch.location(in: view)
             
@@ -793,7 +808,9 @@ class GameViewController: UIViewController {
                         currentAnswerArray.append(charsArray[view.tag - 1])
                         arrayOfCurrentAnswersViews.append(view)
                     }
-                    
+                    if soundIsOn {
+                        playSound()
+                    }
                 } else if position.x >= globalPoint.x && position.x <= globalPoint.x + view.bounds.width  &&
                             position.y >= globalPoint.y && position.y <= globalPoint.y + view.bounds.height && view.backgroundColor == highliteColor {
                     clearViews(afterView: view)
@@ -812,6 +829,10 @@ class GameViewController: UIViewController {
                 }
                 highliteColor = UIColor.random
                 counterOfRightAnswers += 1
+                
+                if vibroIsOn {
+                    feedbackGenerator?.notificationOccurred(.success)
+                }
                 
                 if counterOfRightAnswers == answers.count {
                     showResult()
@@ -833,10 +854,16 @@ class GameViewController: UIViewController {
                 arrayOfCurrentAnswersViews.forEach { view in
                     view.backgroundColor = .lightGray.withAlphaComponent(0.5)
                 }
+                if vibroIsOn {
+                    feedbackGenerator?.notificationOccurred(.error)
+                }
             }
             currentAnswerArray.removeAll()
             arrayOfCurrentAnswersViews.removeAll()
             showCurrentWord.text = ""
+            if vibroIsOn {
+                feedbackGenerator = nil
+            }
         }
     }
     
@@ -888,6 +915,18 @@ class GameViewController: UIViewController {
     func goBactToCategories() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    private func playSound() {
+        let pathToSound = Bundle.main.path(forResource: "Bubble", ofType: "wav")!
+        let url = URL(fileURLWithPath: pathToSound)
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+        } catch {
+            
+        }
+    }
+    
     
     // MARK: - @objc методы
     

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E02A447A2A457AD900D0B5AC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02A44792A457AD900D0B5AC /* SettingsViewController.swift */; };
+		E02A447F2A458DD300D0B5AC /* Bubble.wav in Resources */ = {isa = PBXBuildFile; fileRef = E02A447E2A458DD300D0B5AC /* Bubble.wav */; };
 		E031182F2A06B1C600FE1DAA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E031182E2A06B1C600FE1DAA /* UIColorExtension.swift */; };
 		E03678642A07755F002643F6 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03678632A07755F002643F6 /* CategoriesViewController.swift */; };
 		E03678662A077578002643F6 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03678652A077578002643F6 /* CategoriesCollectionViewCell.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E02A44792A457AD900D0B5AC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E02A447E2A458DD300D0B5AC /* Bubble.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bubble.wav; sourceTree = "<group>"; };
 		E031182E2A06B1C600FE1DAA /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E03678632A07755F002643F6 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		E03678652A077578002643F6 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -57,6 +61,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E02A44782A457AC500D0B5AC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E02A44792A457AD900D0B5AC /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E02A447B2A458B1B00D0B5AC /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E02A447E2A458DD300D0B5AC /* Bubble.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		E03678622A07754A002643F6 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +117,7 @@
 		E03B1BD72A06465A00F3DB7A /* Fillwords */ = {
 			isa = PBXGroup;
 			children = (
+				E02A447B2A458B1B00D0B5AC /* Sounds */,
 				E03678682A07758B002643F6 /* Models */,
 				E0F3955D2A06D78E00EDE14A /* Views */,
 				E0F3955E2A06D7A200EDE14A /* Extensions */,
@@ -130,6 +151,7 @@
 		E0F3955D2A06D78E00EDE14A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E02A44782A457AC500D0B5AC /* Settings */,
 				E03678622A07754A002643F6 /* Categories */,
 				E0C15A332A0B812C00B830C0 /* Game */,
 				E096878D2A07B34F00BD301B /* PopUp */,
@@ -205,6 +227,7 @@
 			files = (
 				E03B1BE52A06465C00F3DB7A /* LaunchScreen.storyboard in Resources */,
 				E03B1BE22A06465C00F3DB7A /* Assets.xcassets in Resources */,
+				E02A447F2A458DD300D0B5AC /* Bubble.wav in Resources */,
 				E03B1BE02A06465A00F3DB7A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +248,7 @@
 				E03678642A07755F002643F6 /* CategoriesViewController.swift in Sources */,
 				E036786A2A0775A4002643F6 /* CategoriesStruct.swift in Sources */,
 				E036786E2A077D89002643F6 /* AnswersStruct.swift in Sources */,
+				E02A447A2A457AD900D0B5AC /* SettingsViewController.swift in Sources */,
 				E03678722A0795F8002643F6 /* PopUpWindowView.swift in Sources */,
 				E03B1BD92A06465A00F3DB7A /* AppDelegate.swift in Sources */,
 				E03B1BDB2A06465A00F3DB7A /* SceneDelegate.swift in Sources */,
@@ -304,7 +328,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -358,7 +382,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -382,6 +406,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -409,6 +434,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
