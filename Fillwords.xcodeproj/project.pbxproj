@@ -24,6 +24,7 @@
 		E03B1BE22A06465C00F3DB7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03B1BE12A06465C00F3DB7A /* Assets.xcassets */; };
 		E03B1BE52A06465C00F3DB7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E03B1BE32A06465C00F3DB7A /* LaunchScreen.storyboard */; };
 		E096878C2A07B22400BD301B /* InfoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E096878B2A07B22400BD301B /* InfoStruct.swift */; };
+		E0B8EDB02A4593DA0028FD2C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E0B8EDAF2A4593DA0028FD2C /* README.md */; };
 		E0F3955C2A06D70800EDE14A /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3955B2A06D70800EDE14A /* PopUpViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		E03B1BE42A06465C00F3DB7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E03B1BE62A06465C00F3DB7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E096878B2A07B22400BD301B /* InfoStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStruct.swift; sourceTree = "<group>"; };
+		E0B8EDAF2A4593DA0028FD2C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E0F3955B2A06D70800EDE14A /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +103,7 @@
 		E03B1BCC2A06465A00F3DB7A = {
 			isa = PBXGroup;
 			children = (
+				E0B8EDAF2A4593DA0028FD2C /* README.md */,
 				E03B1BD72A06465A00F3DB7A /* Fillwords */,
 				E03B1BD62A06465A00F3DB7A /* Products */,
 			);
@@ -227,6 +230,7 @@
 			files = (
 				E03B1BE52A06465C00F3DB7A /* LaunchScreen.storyboard in Resources */,
 				E03B1BE22A06465C00F3DB7A /* Assets.xcassets in Resources */,
+				E0B8EDB02A4593DA0028FD2C /* README.md in Resources */,
 				E02A447F2A458DD300D0B5AC /* Bubble.wav in Resources */,
 				E03B1BE02A06465A00F3DB7A /* Main.storyboard in Resources */,
 			);
