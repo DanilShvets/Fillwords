@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CategoriesViewController: UIViewController {
     private struct UIConstants {
@@ -61,6 +62,8 @@ class CategoriesViewController: UIViewController {
         button.addTarget(self, action: #selector(playButtonPressed), for: .touchUpInside)
         return button
     }()
+    private lazy var soundIsOn = true
+    private var player: AVAudioPlayer?
     
     private let categories = (0...3).map({ CategoriesStruct(index: $0) })
     private let boardStruct = BoardStruct()
@@ -219,16 +222,52 @@ extension CategoriesViewController {
         present(viewControllerToPresent, animated: true, completion: nil)
     }
     
+    private func playSound() {
+        let pathToSound = Bundle.main.path(forResource: "Snap", ofType: "wav")!
+        let url = URL(fileURLWithPath: pathToSound)
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+        } catch {
+            
+        }
+    }
+    
+    private func animate(button: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            button.transform = button.transform.scaledBy(x: 0.85, y: 0.85)
+        }
+        UIView.animate(withDuration: 0.1, delay: 0.1) {
+            button.transform = button.transform.scaledBy(x: 1.0/0.85, y: 1.0/0.85)
+        }
+    }
+    
     @objc private func infoButtonPressed() {
+        animate(button: infoButton)
         let popUpWindow = PopUpViewController(title: "ФИЛВОРДЫ", text: infoText, buttontext: "OK")
         present(popUpWindow, animated: true, completion: nil)
     }
     @objc private func settingsButtonPressed() {
-        showMyViewControllerInACustomizedSheet()
+        animate(button: settingsButton)
+        UIView.animate(withDuration: 0.5) {
+            self.settingsButton.transform = self.settingsButton.transform.rotated(by: CGFloat.pi)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.showMyViewControllerInACustomizedSheet()
+        }
     }
     
     @objc private func playButtonPressed() {
-        presentGameViewController()
+        if UserDefaults.standard.value(forKey: "soundIsOn") != nil {
+            soundIsOn = UserDefaults.standard.bool(forKey: "soundIsOn")
+        }
+        animate(button: playButton)
+        if soundIsOn {
+            playSound()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.presentGameViewController()
+        }
     }
     
 }

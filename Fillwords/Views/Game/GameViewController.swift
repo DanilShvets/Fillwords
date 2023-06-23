@@ -927,10 +927,20 @@ class GameViewController: UIViewController {
         }
     }
     
+    private func animate(button: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            button.transform = button.transform.scaledBy(x: 0.85, y: 0.85)
+        }
+        UIView.animate(withDuration: 0.1, delay: 0.1) {
+            button.transform = button.transform.scaledBy(x: 1.0/0.85, y: 1.0/0.85)
+        }
+    }
+    
     
     // MARK: - @objc методы
     
     @objc private func restartLevelButtonPressed() {
+        animate(button: restartLevel)
         arrayOfViews.forEach { view in
             view.tag = viewTagForRestart
             view.backgroundColor = .lightGray.withAlphaComponent(0.5)
@@ -943,12 +953,18 @@ class GameViewController: UIViewController {
     }
     
     @objc private func infoButtonPressed() {
+        animate(button: infoButton)
         let popUpWindow = PopUpViewController(title: "ИНФОРМАЦИЯ", text: infoLabel, buttontext: "OK")
-        present(popUpWindow, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.present(popUpWindow, animated: true, completion: nil)
+        }
     }
     
     @objc private func exitButtonPressed() {
-        goBactToCategories()
+        animate(button: exitButton)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.goBactToCategories()
+        }
     }
     
 }

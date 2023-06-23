@@ -23,6 +23,7 @@
 		E03B1BE02A06465A00F3DB7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E03B1BDE2A06465A00F3DB7A /* Main.storyboard */; };
 		E03B1BE22A06465C00F3DB7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03B1BE12A06465C00F3DB7A /* Assets.xcassets */; };
 		E03B1BE52A06465C00F3DB7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E03B1BE32A06465C00F3DB7A /* LaunchScreen.storyboard */; };
+		E095111B2A45C3310008DFBD /* Snap.wav in Resources */ = {isa = PBXBuildFile; fileRef = E095111A2A45C3310008DFBD /* Snap.wav */; };
 		E096878C2A07B22400BD301B /* InfoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E096878B2A07B22400BD301B /* InfoStruct.swift */; };
 		E0B8EDB02A4593DA0028FD2C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E0B8EDAF2A4593DA0028FD2C /* README.md */; };
 		E0F3955C2A06D70800EDE14A /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3955B2A06D70800EDE14A /* PopUpViewController.swift */; };
@@ -47,6 +48,7 @@
 		E03B1BE12A06465C00F3DB7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E03B1BE42A06465C00F3DB7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E03B1BE62A06465C00F3DB7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E095111A2A45C3310008DFBD /* Snap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Snap.wav; sourceTree = "<group>"; };
 		E096878B2A07B22400BD301B /* InfoStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStruct.swift; sourceTree = "<group>"; };
 		E0B8EDAF2A4593DA0028FD2C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E0F3955B2A06D70800EDE14A /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		E02A447B2A458B1B00D0B5AC /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				E095111A2A45C3310008DFBD /* Snap.wav */,
 				E02A447E2A458DD300D0B5AC /* Bubble.wav */,
 			);
 			path = Sounds;
@@ -232,6 +235,7 @@
 				E03B1BE22A06465C00F3DB7A /* Assets.xcassets in Resources */,
 				E0B8EDB02A4593DA0028FD2C /* README.md in Resources */,
 				E02A447F2A458DD300D0B5AC /* Bubble.wav in Resources */,
+				E095111B2A45C3310008DFBD /* Snap.wav in Resources */,
 				E03B1BE02A06465A00F3DB7A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
